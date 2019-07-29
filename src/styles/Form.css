@@ -1,0 +1,56 @@
+.Form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.Buttons {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 400px;
+}
+
+.configure-btn {
+  background-color: #219fee;
+  color: white;
+  border: 2px solid #219fee;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  height: 50px;
+  width: 400px;
+}
+
+.fill-btn {
+  background-color: #323643;
+  color: white;
+  border: 2px solid #323643;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  height: 50px;
+  width: 400px;
+}
+
+.send-btn {
+  background-color: #fa8900;
+  color: white;
+  border: 2px solid #fa8900;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  height: 50px;
+  width: 400px;
+}
