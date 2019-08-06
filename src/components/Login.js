@@ -28,6 +28,7 @@ export default class Login extends React.Component {
         if (username === "" || password === "") {
             this.setState({ error: "Username or password fields cannot be empty!" })
         } else {
+
             axios({
                 method: 'post',
                 url: 'https://api.jotform.com/login',
@@ -93,16 +94,17 @@ export default class Login extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" onChange={(e) => this.updateUsername(e.target.value)} placeholder="Enter username" />
+                            <Form.Control value={this.state.username} type="text" onChange={(e) => this.updateUsername(e.target.value)} placeholder="Enter username" />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" onChange={(e) => this.updatePassword(e.target.value)} placeholder="Password" />
+                            <Form.Control value={this.state.password} type="password" onChange={(e) => this.updatePassword(e.target.value)} placeholder="Password" />
                         </Form.Group>
                         <Button bsPrefix="custom-btn" onClick={this.handleLogin}>
                             Login
                         </Button>
+                        <p style={{ fontSize: 12 }}><b>NOTE:</b> This project has not fully completed yet and will be updated in future. Some outdated JotForm and custom components may not be recognized. Also, if you use Chrome you need to disable Chrome CORS Policy to make mock data API call by installing <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">Allow CORS Extension</a>.</p>
                     </Form>
                 </div>
 

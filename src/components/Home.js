@@ -1,7 +1,16 @@
 import React from "react";
 import '../styles/Home.css';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { css } from '@emotion/core';
+import { BounceLoader } from 'react-spinners';
+
 const axios = require('axios');
+const override = css`
+    display: block;
+    margin: 0 auto;
+    margin-top: 65px;
+    border-color: #fa8900;
+`;
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -16,7 +25,7 @@ export default class Home extends React.Component {
     getForms = () => {
         axios({
             method: 'get',
-            url: 'http://api.jotform.com/user/forms',
+            url: 'https://api.jotform.com/user/forms',
             headers: {
                 'Accept': 'application/json',
             },
@@ -43,7 +52,13 @@ export default class Home extends React.Component {
         if (isLoading) {
             return (
                 <div className="Home">
-                    <p>Loading</p>
+                    <BounceLoader
+                        css={override}
+                        sizeUnit={"px"}
+                        size={100}
+                        color={'#fa8900'}
+                        loading={this.state.isLoading}
+                    />
                 </div>
             )
         }
@@ -51,26 +66,33 @@ export default class Home extends React.Component {
         return (
             <div className="Home">
 
-                {forms.length === 0 ?
-                    <p>You have no form.</p>
-                    :
-                    this.state.forms.map(form => (
-                        form.status !== 'DELETED' ?
-                            <Card style={{ width: '18rem', marginLeft: 20 }}>
-                                <Card.Img variant="top" style={{
-                                    marginLeft: 'auto',
-                                    marginRight: 'auto',
-                                    width: '250px'
-                                }} src="https://www.jotform.com/resources/assets/icon/jotform-logomark-transparent-400x400.png" />
-                                <Card.Body>
-                                    <Card.Title>{form.title}</Card.Title>
-                                    <Card.Text>{form.count === 0 ? 'No submission has made.' : form.count + ' submissions made.'}</Card.Text>
-                                    <Button bsPrefix="custom-btn" onClick={() => this.props.history.push(`/form/${form.id}`, { form: form })} >View</Button>
-                                </Card.Body>
-                            </Card>
-                            : null
-                    ))
-                }
+
+                <Container>
+                    <Row>
+                        {forms.length === 0 ?
+                            <Col><p>You have no form.</p></Col>
+                            :
+                            this.state.forms.map(form => (
+                                form.status !== 'DELETED' ?
+                                    <Col style={{ paddingBottom: 30 }}>
+                                        <Card style={{ width: '18rem', marginLeft: 20 }}>
+                                            <Card.Img variant="top" style={{
+                                                marginLeft: 'auto',
+                                                marginRight: 'auto',
+                                                width: '250px'
+                                            }} src="https://www.jotform.com/resources/assets/icon/jotform-logomark-transparent-400x400.png" />
+                                            <Card.Body>
+                                                <Card.Title><a className="link" href={"https://form.jotform.com/" + form.id}>{form.title}</a></Card.Title>
+                                                <Card.Text>{form.count === 0 ? 'No submission has made.' : form.count + ' submissions made.'}</Card.Text>
+                                                <Button bsPrefix="custom-btn" onClick={() => this.props.history.push(`/form/${form.id}`, { form: form })} >View</Button>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    : null
+                            ))
+                        }
+                    </Row>
+                </Container>
 
             </div>
         )

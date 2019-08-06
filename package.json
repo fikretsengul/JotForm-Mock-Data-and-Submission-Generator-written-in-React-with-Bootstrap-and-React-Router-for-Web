@@ -1,8 +1,9 @@
 {
-  "name": "webpack-web",
-  "version": "0.1.0",
+  "name": "JotForm-MockData-Generator",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.14",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
@@ -10,7 +11,8 @@
     "react-bootstrap-sweetalert": "^4.4.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-spinners": "^0.5.13"
   },
   "scripts": {
     "start": "react-scripts start",
