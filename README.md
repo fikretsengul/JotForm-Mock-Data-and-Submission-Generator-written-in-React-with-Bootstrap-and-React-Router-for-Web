@@ -5,5 +5,3 @@ This is a web application that dynamically analyzes your form inputs and offers 
 **ONLINE VERSION: https://jotform.fikretsengul.com**
 
 ![Screenshot](preview1.png)
-![Screenshot](preview2.png)
-![Screenshot](preview3.png)
